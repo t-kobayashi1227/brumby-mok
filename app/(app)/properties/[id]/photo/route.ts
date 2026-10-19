@@ -1,7 +1,7 @@
 import { getSql } from "../../../../../lib/db";
 import { photosReady } from "../../../../../lib/photos";
 
-// 物件の写真を返す（property_photos）。Basic認証（proxy.ts）の中だけで見える
+// 物件の写真を返す（property_photos）
 // URL に版（?v=更新日時）を付けて呼ぶので、ブラウザに長く置いてよい（差し替えると URL が変わる）
 
 export async function GET(_request: Request, ctx: RouteContext<"/properties/[id]/photo">) {

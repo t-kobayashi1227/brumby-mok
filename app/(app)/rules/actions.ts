@@ -8,7 +8,7 @@ import type { Condition, Effect, Op, Rule } from "../../../lib/rules/engine";
 import type { Sql } from "../../../lib/db";
 
 // ルール表の画面から、ルールを追加・変更・削除する（設計書 D14）
-// PoC では Basic認証の共通パスワードを知る人なら誰でも編集できる（D14）。誰が直したかは履歴で追う
+// PoC では画面を開ける人なら誰でも編集できる（D14。Basic認証は一旦外した）。誰が直したかは履歴で追う
 // 変えると rules の version が上がり、変更（削除も）が rule_revisions に残る（DBのトリガー）
 
 export interface ActionState {

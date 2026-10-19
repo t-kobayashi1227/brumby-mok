@@ -3,7 +3,7 @@ import { fetchLayer, type FetchResult } from "../../../../../lib/surroundings/fe
 import { LAYERS, OSM_SUPERMARKET } from "../../../../../lib/surroundings/layers";
 import { fetchSupermarkets } from "../../../../../lib/surroundings/osm";
 
-// 物件の周りの公開データを1種類だけ取る（設計書 4.2）。Basic認証（proxy.ts）の中だけで呼べる
+// 物件の周りの公開データを1種類だけ取る（設計書 4.2）
 // Server Actions は画面から1つずつ順にしか呼ばれないので、画面が種類ごとに同時に呼べるよう Route Handler にしている
 // （node_modules/next/dist/docs/01-app/02-guides/server-actions.md「Sequential dispatch on the client」）
 // 1回の呼び出しは数秒（タイル数枚）なので、Vercel の実行時間の上限にかからない
