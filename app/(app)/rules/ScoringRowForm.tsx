@@ -1,7 +1,7 @@
 "use client";
 
 import { startTransition, useActionState } from "react";
-import { AGE_BANDS, MARKS } from "../../../lib/scoring/constants";
+import { AGE_BANDS, basisClassLabel, MARKS } from "../../../lib/scoring/constants";
 import type { FieldDef, TableDef } from "../../../lib/scoring/tables";
 import { fieldLabel } from "../../_lib/ui";
 import { deleteScoringRow, saveScoringRow, type ScoringFormState } from "./scoring-actions";
@@ -53,7 +53,7 @@ function Field({ f, value, personaIds, editablePk }: { f: FieldDef; value: unkno
             {!f.required && <option value="">—</option>}
             {f.options?.map((o) => (
               <option key={o} value={o}>
-                {o}
+                {f.name === "basis_class" ? basisClassLabel(o) : o}
               </option>
             ))}
           </select>

@@ -50,7 +50,7 @@ export default function PlanPage() {
             <div className="text-[13px] font-bold text-[#7a5c1e] mb-1">オプション：BRUMBY販売ウォッチ（モニター代行）</div>
             <div className="text-xs text-[#8a6c2e]">競合調査・反響確認・定期レポートを弊社にて代行します。</div>
             {optionExpanded && (
-              <div className="text-xs text-[#8a6c2e] mt-2">競合物件の入力・更新（週1回）、反響の入力、月次レポートの送付をBRUMBYの担当者が代行します。</div>
+              <div className="text-xs text-[#8a6c2e] mt-2">競合物件の入力・更新（週1回）、反響の入力、月次レポートの送付をBRUMBY様の担当者が代行します。</div>
             )}
           </div>
         </div>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getSql } from "../../../lib/db";
-import { ITEM_LABEL } from "../../../lib/scoring/constants";
+import { basisClassLabel, ITEM_LABEL } from "../../../lib/scoring/constants";
 import { responseCoefficients } from "../../../lib/scoring/engine";
 import { loadScoringConfig } from "../../../lib/scoring/load";
 import { SCORING_TABLES, type TableDef } from "../../../lib/scoring/tables";
@@ -84,7 +84,7 @@ function summaryOf(table: string, r: Row): React.ReactNode {
               .map(([k, v]) => `${k}${v}`)
               .join(" ")}
           </span>
-          {r.basis_class ? <span className="ml-2 text-[10px] text-muted">［{String(r.basis_class)}］</span> : null}
+          {r.basis_class ? <span className="ml-2 text-[10px] text-muted">［{basisClassLabel(String(r.basis_class))}］</span> : null}
           {r.enabled === false && <span className="ml-2 text-muted">（使わない）</span>}
         </>
       );

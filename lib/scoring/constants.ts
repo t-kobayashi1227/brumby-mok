@@ -1,4 +1,4 @@
-import type { AgeBand, Layer, Mark, RuleLayer } from "./types";
+import type { AgeBand, AgeClass, Layer, Mark, RuleLayer } from "./types";
 
 // 採点ルール表の決まった区分（Excel の列の並びと同じ）
 
@@ -106,8 +106,18 @@ export const MANUAL_METRIC_KEYS = ["バス停_m", "スーパー_m", "病院_m", 
 
 export const NEW_BUILD_MAX_AGE = 1;
 
-export function ageClassOf(age: number): "新築" | "築2〜20年" | "築21年以上" {
+/** 相場の築年数の区分（相場・周辺の取引の並び） */
+export const AGE_CLASSES: AgeClass[] = ["新築", "築2〜10年", "築11〜20年", "築21〜30年", "築31〜40年", "築41年以上"];
+
+export function ageClassOf(age: number): AgeClass {
   if (age <= NEW_BUILD_MAX_AGE) return "新築";
-  if (age <= 20) return "築2〜20年";
-  return "築21年以上";
+  if (age <= 10) return "築2〜10年";
+  if (age <= 20) return "築11〜20年";
+  if (age <= 30) return "築21〜30年";
+  if (age <= 40) return "築31〜40年";
+  return "築41年以上";
 }
+
+/** 点数の根拠区分の画面表示名（DB の値はそのまま、お客様向けに敬称を付ける） */
+export const BASIS_CLASS_LABEL: Record<string, string> = { BRUMBY確認: "BRUMBY様確認", BRUMBY実務: "BRUMBY様実務" };
+export const basisClassLabel = (v: string): string => BASIS_CLASS_LABEL[v] ?? v;

@@ -565,6 +565,9 @@ npm run fetch-surroundings -- --property 1
 # 地価を範囲を絞って試す（範囲は 西,南,東,北 の経度・緯度）
 npm run ingest -- reinfolib-land-prices --year 2026 --bbox 139.0,37.88,139.1,37.95
 
+# 相場表（区×築年数区分の中央値）を取引データから作り直す（--dry-run で値だけ見る）
+npm run build:market-reference
+
 # 採点ルール表（Excel）を取り込む（--dry-run で件数と注意だけ見る）
 npm run import-scoring -- "C:/Users/.../採点ルール表_初版.xlsx"
 

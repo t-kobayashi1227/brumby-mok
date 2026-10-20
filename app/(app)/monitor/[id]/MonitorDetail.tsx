@@ -20,7 +20,7 @@ import { card, statBox, tableHead } from "../../../_lib/ui";
 const nextActions: Record<PropertyItem["status"], string[]> = {
   順調: ["今の広告配分を維持する", "見学会の日程を追加し、見学の機会を逃さない", "2週間後に競合の掲載件数と反響を再確認する"],
   注意: ["閲覧に対して問合せが少ないため、物件ページの写真と訴求文を見直す", "競合が減っている今のうちに、SNS広告の出稿を強化する", "2週間後に競合の掲載件数と反響を再確認する"],
-  要改善: ["訴求ポイントと媒体の配分をBRUMBYに相談する", "物件ページの写真と訴求文を見直す", "2週間後に競合の掲載件数と反響を再確認する"],
+  要改善: ["訴求ポイントと媒体の配分をBRUMBY様に相談する", "物件ページの写真と訴求文を見直す", "2週間後に競合の掲載件数と反響を再確認する"],
 };
 
 export default function MonitorDetail({ property }: { property: PropertyItem }) {

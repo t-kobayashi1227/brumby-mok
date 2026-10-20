@@ -1,4 +1,4 @@
-import { AGE_BANDS, MARKS } from "./constants";
+import { AGE_BANDS, AGE_CLASSES, MARKS } from "./constants";
 
 // /rules の画面で編集する、採点ルール表の表の定義（設計書 D35）
 // 画面（入力欄の並び）とサーバーの保存処理（値の読み取り・検証）の両方がこの定義を使う
@@ -146,7 +146,7 @@ export const SCORING_TABLES: Record<string, TableDef> = {
     canDelete: true,
     fields: [
       { name: "ward", label: "区", type: "text", pk: true, required: true },
-      { name: "age_class", label: "築年数の区分", type: "enum", options: ["新築", "築2〜20年", "築21年以上"], pk: true, required: true },
+      { name: "age_class", label: "築年数の区分", type: "enum", options: AGE_CLASSES, pk: true, required: true },
       { name: "price_man_yen", label: "価格（万円）", type: "num", required: true },
       { name: "building_sqm", label: "延床（㎡）", type: "num" },
       { name: "land_sqm", label: "土地（㎡）", type: "num" },

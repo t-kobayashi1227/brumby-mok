@@ -533,11 +533,17 @@ GET https://www.reinfolib.mlit.go.jp/ex-api/external/XKT026?response_format=geoj
 | `scoring_rules` | 59（R01〜R59） |
 | `scoring_params` | 32 |
 | `competitor_items` | 8 |
-| `market_reference` | 24（8区×3区分） |
+| `market_reference` | 24（8区×3区分）→ 2026-10-20 に 48（8区×6区分） |
 | `area_popularity` | 198 |
 | `media_channels` / `media_usage_rates` | 11 / 8 |
 | `media_results` | 0（Excel は記入例だけ） |
 | `scoring_revisions`（Excel の変更履歴） | 30 |
+
+### 2026-10-20：相場の築年数の区分を6つに
+- 新築／築2〜20年／築21年以上 → 新築（築1年以内）／築2〜10年／築11〜20年／築21〜30年／築31〜40年／築41年以上（マイグレーション `20261020100000_market_age_classes.sql`）
+- 値は `npm run build:market-reference` で取引データから集計。条件は Excel の相場シートの出典と同じ（新潟市8区、2021年以降、宅地(土地と建物)、用途が住宅（成約価格情報は用途が空なので含む）、木造・軽量鉄骨造、延床40〜300㎡）。3区分で集計すると、Excel の24行と価格・延床・土地・築年数・件数がすべて一致することを確かめた
+- 件数が少ない区分がある（南区の築11〜20年 4件、西蒲区の築2〜10年 6件、南区の築2〜10年 10件）。PoC の段階なのでそのまま使う
+- Excel も同じ値の6区分にしたコピー（`採点ルール表_初版_築年数6区分.xlsx`）を作った。相場・周辺の取引の表、試算シートの区分を決める式（C27・I33・I34・I36・I37）、変更履歴を更新
 
 ### 確かめたこと
 - DB から読んだ設定（`lib/scoring/load.ts`）と、Excel から読んだ設定（`scripts/scoring/parse.ts`）が、全部の表で一致した

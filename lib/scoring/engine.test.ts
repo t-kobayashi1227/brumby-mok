@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { compareCompetitors, decideBudget, responseCoefficients, runScoring, scoreAffordability, scoreCompetition, scoreRuleLayer, scoreSalability } from "./engine";
+import { ageClassOf } from "./constants";
 import { buildInputs, roomsFromLayout, wardTownFromAddress } from "./inputs";
 import type { InputValue, Persona, ScoringConfig, ScoringInputs } from "./types";
 import { parseScoringWorkbook } from "../../scripts/scoring/parse";
@@ -188,6 +189,12 @@ describe("入力の読み取り", () => {
     expect(r.values["平屋"].value).toBeNull();
     expect(r.values["価格_相場比"].value).toBe(1.08);
     expect(r).toMatchObject({ ward: "中央区", town: "上近江", ageClass: "新築", isNew: true });
+  });
+
+  it("築年数の区分：新築（1年以内）／2〜10／11〜20／21〜30／31〜40／41年以上", () => {
+    expect([0, 1, 2, 10, 11, 20, 21, 30, 31, 40, 41, 60].map(ageClassOf)).toEqual([
+      "新築", "新築", "築2〜10年", "築2〜10年", "築11〜20年", "築11〜20年", "築21〜30年", "築21〜30年", "築31〜40年", "築31〜40年", "築41年以上", "築41年以上",
+    ]);
   });
 });
 

@@ -63,7 +63,7 @@ export interface CompetitorItem {
   tieMargin: number;
 }
 
-export type AgeClass = "新築" | "築2〜20年" | "築21年以上";
+export type AgeClass = "新築" | "築2〜10年" | "築11〜20年" | "築21〜30年" | "築31〜40年" | "築41年以上";
 
 /** 区×築年数区分の取引の中央値（シート：相場・周辺の取引） */
 export interface MarketReference {

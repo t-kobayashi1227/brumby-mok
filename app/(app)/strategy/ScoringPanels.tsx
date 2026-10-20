@@ -1,4 +1,4 @@
-import { ITEM_LABEL } from "../../../lib/scoring/constants";
+import { basisClassLabel, ITEM_LABEL } from "../../../lib/scoring/constants";
 import type { AffordabilityDetail, CompetitorComparison, InputValue, LayerResult, PersonaResult, SalabilityResult } from "../../../lib/scoring/types";
 import { card, statBox, tableHead } from "../../_lib/ui";
 
@@ -96,7 +96,7 @@ function LayerReasons({ layer, inputs }: { layer: LayerResult; inputs: Record<st
             )}
             <span className="ml-1 text-[10px] text-muted">{h.id}</span>
           </span>
-          {h.basisClass && <span className={`shrink-0 px-1.5 rounded border text-[10px] ${BASIS_CLASS[h.basisClass] ?? "border-line text-muted"}`}>{h.basisClass}</span>}
+          {h.basisClass && <span className={`shrink-0 px-1.5 rounded border text-[10px] ${BASIS_CLASS[h.basisClass] ?? "border-line text-muted"}`}>{basisClassLabel(h.basisClass)}</span>}
         </div>
       ))}
       {layer.max !== undefined && (

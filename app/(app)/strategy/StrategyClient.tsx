@@ -62,6 +62,9 @@ export interface StrategyClientProps {
   mlitSource: string;
 }
 
+/** 検証に通らなかったときの注意文を出すか。PoC ではお客様に見せるため一旦出さない（戻すときは true に） */
+const SHOW_NARRATIVE_REVIEW_NOTICE = false;
+
 const cardNo = (seq: number) => `F-${String(seq).padStart(2, "0")}`;
 
 function factTitle(facts: FactLite[], seq: number): string {
@@ -248,7 +251,7 @@ export default function StrategyClient(props: StrategyClientProps) {
               <CiteBadges cites={headline.cites} facts={facts} />
             </div>
           ) : null}
-          {narrativeStatus === "needs_review" && (
+          {SHOW_NARRATIVE_REVIEW_NOTICE && narrativeStatus === "needs_review" && (
             <div className="rounded-md border border-[#f0d9a8] bg-[#fff8e8] px-3 py-2 text-xs text-[#8a5a00]">
               一部の文が検証に通りませんでした（数字・比較の言葉・表現のいずれか。要確認）。打ち合わせの場で見直してください。
             </div>

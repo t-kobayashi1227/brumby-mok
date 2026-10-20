@@ -1,4 +1,4 @@
-import { AGE_BANDS, MARKS } from "../../lib/scoring/constants";
+import { AGE_BANDS, AGE_CLASSES, MARKS } from "../../lib/scoring/constants";
 import type { AgeClass, CompetitorItem, Mark, MediaChannel, MediaUsageRate, Persona, RuleLayer, ScoringConfig, ScoringItem, ScoringRule } from "../../lib/scoring/types";
 import { cell, colName, colIndex, lastRow, numCell, readWorkbook, str, type Sheet } from "./xlsx";
 
@@ -237,7 +237,7 @@ export function parseScoringWorkbook(path: string): ParsedWorkbook {
     const ward = str(ms, "A", r);
     const ageClass = str(ms, "B", r) as AgeClass | null;
     const price = numCell(ms, "C", r);
-    if (!ward || !ageClass || price === null || !["新築", "築2〜20年", "築21年以上"].includes(ageClass)) continue;
+    if (!ward || !ageClass || price === null || !AGE_CLASSES.includes(ageClass)) continue;
     market.push({ ward, ageClass, priceManYen: price, buildingSqm: numCell(ms, "D", r), landSqm: numCell(ms, "E", r), ageYears: numCell(ms, "F", r), n: numCell(ms, "G", r) });
   }
 

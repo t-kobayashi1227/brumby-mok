@@ -7,7 +7,7 @@ export function SourceNote({ children, className = "" }: { children: React.React
 
 /** Marks figures that are entered by hand (or by the BRUMBY support service), not collected automatically. */
 export function ManualEntryNote({ className = "" }: { className?: string }) {
-  return <span className={`text-[11px] text-muted ${className}`}>手入力／BRUMBY代行で更新</span>;
+  return <span className={`text-[11px] text-muted ${className}`}>手入力／BRUMBY様代行で更新</span>;
 }
 
 /** Banner for screens that only become available after launch (roadmap Step 3). */
